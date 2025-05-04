@@ -1,4 +1,5 @@
 import streamlit as st
+from datetime import datetime
 
 st.set_page_config(layout="wide")  # Esta linha deve vir antes de qualquer st.write(), st.title(), etc.
 
