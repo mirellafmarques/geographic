@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")  # Esta linha deve vir antes de qualquer st.wr
 st.sidebar.title("Geographic")
 page = st.sidebar.radio("Aplicações", ["Home", "Magnetic"])
 
-logo = "/workspaces/geographic/Earth.jpeg"
+logo = "Earth.jpeg"
 st.sidebar.image(logo)
 
 st.sidebar.title("About")
