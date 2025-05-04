@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "LinhasdeSondagem",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 1 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -43.140851573486302, -22.910259387245027 ], [ -43.148564504629071, -22.893050460256521 ] ] ] } },
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -43.13910377947122, -22.909378499139159 ], [ -43.146375192508309, -22.892300371648485 ] ] ] } },
+{ "type": "Feature", "properties": { "id": 3 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -43.143094324969738, -22.910693192483226 ], [ -43.150505806848884, -22.894069346498526 ] ] ] } }
+]
+}
