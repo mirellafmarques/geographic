@@ -36,17 +36,35 @@ elif page == "Magnetic":
 import ppigrf
 from datetime import datetime
 
-# Defina a localização e a data
-latitude = -23.5505
-longitude = -46.6333
-altitude_km = 0  # em quilômetros
-data = datetime(2025, 5, 2)
 
-# Calcule os componentes do campo magnético
-Be, Bn, Bu = ppigrf.igrf(longitude, latitude, altitude_km, data)
+# Inputs do usuário
+col1, col2, col3 = st.columns(3)
 
-print(f"Componente Leste (Be): {Be.item():.2f} nT")
-print(f"Componente Norte (Bn): {Bn.item():.2f} nT")
-print(f"Componente Vertical (Bu): {Bu.item():.2f} nT")
+with col1:
+    latitude = st.number_input("Latitude (°)", value=-23.5505, format="%.6f")
+with col2:
+    longitude = st.number_input("Longitude (°)", value=-46.6333, format="%.6f")
+with col3:
+    altitude_km = st.number_input("Altitude (km)", value=0.0, format="%.2f")
+
+data_input = st.date_input("Data", value=datetime(2025, 5, 2))
+data = datetime.combine(data_input, datetime.min.time())
+
+# Botão para calcular
+if st.button("Calcular as Componentes Magnéticas"):
+    # Cálculo do campo magnético
+    Be, Bn, Bu = ppigrf.igrf(longitude, latitude, altitude_km, data)
+    
+    # Intensidade total e declinação magnética
+    Bt = np.sqrt(Be**2 + Bn**2 + Bu**2)
+    declinacao = np.degrees(np.arctan2(Be, Bn))
+
+# Exibir resultados
+st.subheader("Resultados:")
+#st.write(f"**Componente Leste (Be):** {Be.item():.2f} nT")
+#st.write(f"**Componente Norte (Bn):** {Bn.item():.2f} nT")
+#st.write(f"**Componente Vertical (Bu):** {Bu.item():.2f} nT")
+st.write(f"**Intensidade Total (Bt):** {Bt.item():.2f} nT")
+st.write(f"**Declinação Magnética:** {declinacao.item():.2f}°")  
 
   
