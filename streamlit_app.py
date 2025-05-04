@@ -1,3 +1,4 @@
+pip install folium
 #Importando as Bibliotecas
 import streamlit as st
 from datetime import datetime
