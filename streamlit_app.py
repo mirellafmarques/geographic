@@ -16,7 +16,6 @@ st.sidebar.info("Geographic")
 import streamlit as st
 import pandas as pd
 import pydeck as pdk
-from pyproj import Transformer
 from geographiclib.geodesic import Geodesic
 
 st.title("Cálculo de Área Geodésica")
