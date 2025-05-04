@@ -1,9 +1,6 @@
 #Importando as Bibliotecas
 import streamlit as st
 from datetime import datetime
-from streamlit_folium import st_folium
-import folium
-import folium
 import rasterio
 from rasterio.warp import calculate_default_transform, reproject, Resampling
 from rasterio.plot import reshape_as_image
