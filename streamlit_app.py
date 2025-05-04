@@ -1,5 +1,13 @@
+#Importando as Bibliotecas
 import streamlit as st
 from datetime import datetime
+import folium
+import rasterio
+from rasterio.warp import calculate_default_transform, reproject, Resampling
+from rasterio.plot import reshape_as_image
+import numpy as np
+from PIL import Image
+import ppigrf
 
 st.set_page_config(layout="wide")  # Esta linha deve vir antes de qualquer st.write(), st.title(), etc.
 
@@ -13,13 +21,6 @@ st.sidebar.image(logo)
 st.sidebar.title("About")
 st.sidebar.info("Geographic")
 
-#Importando as Bibliotecas
-import folium
-import rasterio
-from rasterio.warp import calculate_default_transform, reproject, Resampling
-from rasterio.plot import reshape_as_image
-import numpy as np
-from PIL import Image
 
 # Conteúdo condicional
 if page == "Home":
@@ -33,8 +34,6 @@ elif page == "Magnetic":
     # Coloque seu código da seção 'Magnetic' aqui
     # "https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml?useFullSite=true"
 
-import ppigrf
-from datetime import datetime
 
 
 # Inputs do usuário
