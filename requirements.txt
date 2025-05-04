@@ -1,1 +1,5 @@
-streamlit
+streamlit==1.24.1
+pandas==2.0.1
+pydeck==0.8.0
+pyproj==3.5.0
+geographiclib==2.0
