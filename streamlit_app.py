@@ -1,9 +1,6 @@
 #Importando as Bibliotecas
 import streamlit as st
 from datetime import datetime
-import rasterio
-from rasterio.warp import calculate_default_transform, reproject, Resampling
-from rasterio.plot import reshape_as_image
 import numpy as np
 from PIL import Image
 #magnetic
