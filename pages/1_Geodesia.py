@@ -6,10 +6,11 @@ from geographiclib.geodesic import Geodesic
 
 #"mapbox://styles/mapbox/satellite-v9"
 
-st.title("Cálculo de Rotas")
-#st.subheader("Exemplo")
-st.write("Ao definir coordenadas no Rio de Janeiro e em Buenos Aires, este exemplo calcula a distância e a linha de rumo entre elas. Esse cálculo é fundamental para o planejamento eficiente de rotas na navegação aérea e marítima.")
-         
+st.title("Aplicações Geodésicas")
+st.subheader("Cálculo Geodésico Inverso")
+st.write("Ao definir coordenadas no Rio de Janeiro e em Buenos Aires, este exemplo calcula a distância e a linha de rumo entre elas. Esse cálculo é fundamental para o planejamento eficiente de rotas na navegação aérea e marítima. O sistema realizará a transformação para o sistema UTM. Depois que o usuário selecionar os pontos, a distância e o azimute entre eles serão calculados e exibidos. O sistema de referência utilizado é o WGS84.")
+st.write("Para esse cálculo, foi utilizado o método geodésico inverso, que emprega as coordenadas geográficas para determinar a distância e o azimute entre dois pontos.")
+
 # Definir Pontos de Origem e Destino (fixos)
 latitude_origem = -22.9068  # Rio de Janeiro
 longitude_origem = -43.1729
@@ -107,8 +108,8 @@ def latlon_to_utm(lat, lon):
     return easting, northing, zone_number
 
 #st.title("Cálculo de Rotas sobre uma Linha de Rumo")
-st.subheader("Demonstração")
-st.write("Primeiro, insira os pontos de interesse. O sistema realizará a transformação para o sistema UTM. Depois que o usuário selecionar os pontos, a distância e o azimute entre eles serão calculados e exibidos.")
+st.subheader("Calculadora")
+st.write("Primeiro, insira os pontos de interesse. O sistema realizará a transformação para o sistema UTM. Depois que o usuário selecionar os pontos, a distância e o azimute entre eles serão calculados e exibidos. ")
 
 if "pontos" not in st.session_state:
     st.session_state["pontos"] = []
@@ -174,3 +175,77 @@ if st.session_state["pontos"]:
 
 
 #------------------------------------
+# ------------------------------------
+import streamlit as st
+import pydeck as pdk
+from geographiclib.geodesic import Geodesic
+import pandas as pd
+
+# --- Configuração da Página ---
+st.subheader("Cálculo Geodésico Direto")
+
+st.markdown("""
+Esta aplicação utiliza o método geodésico direto, que calcula o ponto de chegada a partir das coordenadas de um ponto inicial, de uma distância e de um azimute (ângulo de direção). O ponto de partida fixo está localizado no Aeroporto Internacional do Rio de Janeiro.""")
+
+# Entradas do Usuário
+distance = st.number_input("Distância (em metros)", min_value=1, max_value=1_000_000, value=100_000)
+azimuth = st.number_input("Azimute (graus)", min_value=0, max_value=360, value=90)
+
+# Ponto Inicial Fixo RJ
+lat1 = -22.8052698
+lon1 = -43.2566277
+
+# --- Cálculo Geodésico Direto ---
+geod = Geodesic.WGS84
+result = geod.Direct(lat1, lon1, azimuth, distance)
+lat2 = result['lat2']
+lon2 = result['lon2']
+
+# Dados para o Mapa
+df = pd.DataFrame([
+    {"lat": lat1, "lon": lon1, "label": "Ponto Inicial (Brasília)"},
+    {"lat": lat2, "lon": lon2, "label": f"Ponto Final ({distance/1000:.1f} km, {azimuth}°)"}
+])
+
+# Camada de pontos
+point_layer = pdk.Layer(
+    "ScatterplotLayer",
+    df,
+    get_position='[lon, lat]',
+    get_fill_color='[200, 30, 0, 160]',
+    get_radius=200,
+    pickable=True
+)
+
+# Camada de linha
+line_layer = pdk.Layer(
+    "LineLayer",
+    pd.DataFrame([{
+        "source_position": [lon1, lat1],
+        "target_position": [lon2, lat2]
+    }]),
+    get_source_position="source_position",
+    get_target_position="target_position",
+    get_width=4,
+    get_color=[0, 100, 255],
+    pickable=False
+)
+
+# View inicial
+view_state = pdk.ViewState(
+    latitude=(lat1 + lat2) / 2,
+    longitude=(lon1 + lon2) / 2,
+    zoom=7,
+    pitch=0
+)
+
+# Renderizar o mapa
+st.pydeck_chart(pdk.Deck(
+    layers=[point_layer, line_layer],
+    initial_view_state=view_state,
+    tooltip={"text": "{label}"}
+))
+
+# Mostrar resultado
+st.write(f"**Latitude:** {lat2:.6f}")
+st.write(f"**Longitude:** {lon2:.6f}")
