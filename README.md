@@ -1,7 +1,8 @@
-# 🎈 Blank app template
+# Aplicações Geoespaciais
 
-A simple Streamlit app template for you to modify!
+Para criar as aplicações geodésicas foi utilizada a biblioteca GeographicLib, e a aplicação geomagnética a biblioteca pipigrj.
 
+https://geographic-v001.streamlit.app/
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
 
 ### How to run it on your own machine
