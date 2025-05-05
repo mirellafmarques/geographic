@@ -200,7 +200,7 @@ if st.session_state["pontos_utm"]:
     ))
 
     # Cálculo da área geodésica
-    if len(df) >= 3:
+if len(df) >= 3:
        st.subheader("Cálculo da Área Geodésica do Polígono")
 
     # Obter pontos (lat, lon) e fechar o polígono
