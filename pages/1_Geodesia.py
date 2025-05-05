@@ -174,7 +174,7 @@ if st.session_state["pontos"]:
         st.write(f"Azimute: {(g['azi1']+ 360) % 360:.2f}°")
 
 
-#------------------------------------
+
 # ------------------------------------
 import streamlit as st
 import pydeck as pdk
@@ -241,6 +241,7 @@ view_state = pdk.ViewState(
 
 # Renderizar o mapa
 st.pydeck_chart(pdk.Deck(
+    map_style="mapbox://styles/mapbox/light-v10",  # Tema claro
     layers=[point_layer, line_layer],
     initial_view_state=view_state,
     tooltip={"text": "{label}"}
