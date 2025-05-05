@@ -82,16 +82,15 @@ if st.button("Calcular Campo Magnético"):
 #image3 = Image.open("Change in Declination over 10 y.jpg")  # Altere o caminho para sua imagem
 #st.image(image3, caption="", use_container_width=True)
 
-import streamlit as st
-from streamlit_image_comparison import image_comparison
+#import streamlit as st
+#from streamlit_image_comparison import image_comparison
 
-st.subheader("Mudança da Intensidade Total (F) do Campo Geomagnético em 100 anos")
+#st.subheader("Mudança da Intensidade Total (F) do Campo Geomagnético em 100 anos")
 
 # Comparação de imagens geomagnéticas entre 1920 e 2020
-image_comparison(
-    img1="/workspaces/geographic/F_map_mf_1920.jpg",  # Imagem do campo geomagnético de 1920
-    img2="/workspaces/geographic/F_map_mf_2020.jpg",  # Imagem do campo geomagnético de 2020
-)
+#image_comparison(
+#    img1="/workspaces/geographic/F_map_mf_1920.jpg",  # Imagem do campo geomagnético de 1920
+#    img2="/workspaces/geographic/F_map_mf_2020.jpg",  # Imagem do campo geomagnético de 2020)
 
 st.header("Intensidade do Campo Geomagnético e a Anomalia Magnética do Atlântico Sul (AMAS)")
 # Exibe uma imagem local
