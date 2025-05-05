@@ -191,7 +191,7 @@ if st.session_state["pontos"]:
             get_width=5,
         )
 
-        # Atualizar o mapa com a linha
+        # Plota a linha
         layers.append(linha_layer)
 
         map = pdk.Deck(
