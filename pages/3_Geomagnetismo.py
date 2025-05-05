@@ -90,7 +90,7 @@ if st.button("Calcular Campo Magnético"):
 #    img2="/workspaces/geographic/F_map_mf_2020.jpg",  # Imagem do campo geomagnético de 2020)
 
 st.header("Intensidade do Campo Geomagnético e a Anomalia Magnética do Atlântico Sul (AMAS)")
-st.image("Workspace/F.jpg", caption="", use_container_width=True)
+st.image("F.jpg", caption="")
 
 
 
