@@ -31,7 +31,7 @@ for i in range(1, npts + 1):
 
 points.append((longitude_destino, latitude_destino))
 
-# Criar DataFrame de segmentos
+# Criar DataFrame
 data_segments = []
 for i in range(len(points) - 1):
     data_segments.append({
@@ -84,6 +84,8 @@ deck = pdk.Deck(
 st.pydeck_chart(deck)
 st.write(f"**Distância entre os pontos:** {dist_rumo / 1000:.2f} km")
 st.write(f"**Azimute (BR-ARG):** {azi1:.2f}°")
+
+
 
 # --------------------------------------------------------
 st.subheader("Calculadora")
@@ -180,6 +182,8 @@ if st.session_state["pontos"]:
         )
 
         st.pydeck_chart(map)
+
+
 
 # ------------------------------------
 import streamlit as st
