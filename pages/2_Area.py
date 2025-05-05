@@ -200,19 +200,26 @@ if st.session_state["pontos_utm"]:
     ))
 
     # Cálculo da área geodésica
-    if len(df) >= 3:
-        st.subheader("Cálculo da Área Geodésica do Polígono")
+   if len(df) >= 3:
+    st.subheader("Cálculo da Área Geodésica do Polígono")
 
-        polygon_points = [(row["latitude"], row["longitude"]) for _, row in df.iterrows()]
+    # Obter pontos (lat, lon) e fechar o polígono
+    polygon_points = [(row["latitude"], row["longitude"]) for _, row in df.iterrows()]
+    if polygon_points[0] != polygon_points[-1]:
+        polygon_points.append(polygon_points[0])  # Fecha o polígono
 
-        geod = Geodesic.WGS84
-        poly = geod.Polygon()
+    geod = Geodesic.WGS84
+    poly = geod.Polygon()
 
-        for lat, lon in polygon_points:
-            poly.AddPoint(lat, lon)
+    for lat, lon in polygon_points:
+        poly.AddPoint(lat, lon)
 
-        area_result = poly.Compute()
+    area_result = poly.Compute()
+    
+    # Verificar se o resultado contém 'area'
+    if 'area' in area_result:
         area_m2 = abs(area_result['area'])
         area_km2 = area_m2 / 1e6
-
-        st.success(f"Área geodésica aproximada: {area_m2:,.2f} m² ({area_km2:.4f} km²)")
+        st.write(f"Área geodésica: {area_m2:.2f} m² ({area_km2:.4f} km²)")
+    else:
+        st.warning("Não foi possível calcular a área. Verifique os pontos do polígono.")
