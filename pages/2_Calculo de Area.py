@@ -16,8 +16,8 @@ def latlon_to_utm(lat, lon):
 
 # Título
 st.title("Cálculo da Área")
-st.subheader("Coordenadas Geográficas")
-st.write("Adicione ao menos 3 pontos e a área será calculada.")
+st.subheader("Coordenadas Geodésicas")
+st.write("Adicione as coordenadas de pelo menos 3 pontos para que a área seja calculada. O sistema de refência utilizado é o WGS84.")
 
 # Inicializar lista de pontos
 if "pontos" not in st.session_state:
@@ -51,7 +51,7 @@ if st.session_state["pontos"]:
         data=df,
         get_position=["longitude", "latitude"],
         get_color=[200, 30, 0, 160],
-        get_radius=50000,
+        get_radius=5000,
         pickable=True,
     )
 
