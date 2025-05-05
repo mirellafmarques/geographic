@@ -200,18 +200,18 @@ if st.session_state["pontos_utm"]:
     ))
 
     # Cálculo da área geodésica
-   if len(df) >= 3:
+    if len(df) >= 3:
        st.subheader("Cálculo da Área Geodésica do Polígono")
 
     # Obter pontos (lat, lon) e fechar o polígono
-    polygon_points = [(row["latitude"], row["longitude"]) for _, row in df.iterrows()]
-    if polygon_points[0] != polygon_points[-1]:
+       polygon_points = [(row["latitude"], row["longitude"]) for _, row in df.iterrows()]
+        if polygon_points[0] != polygon_points[-1]:
         polygon_points.append(polygon_points[0])  # Fecha o polígono
 
-    geod = Geodesic.WGS84
-    poly = geod.Polygon()
+       geod = Geodesic.WGS84
+       poly = geod.Polygon()
 
-    for lat, lon in polygon_points:
+      for lat, lon in polygon_points:
         poly.AddPoint(lat, lon)
 
     area_result = poly.Compute()
