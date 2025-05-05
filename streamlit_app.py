@@ -1,18 +1,5 @@
 import streamlit as st
-from datetime import datetime
-import folium
-import rasterio
-from rasterio.warp import calculate_default_transform, reproject, Resampling
-from rasterio.plot import reshape_as_image
-import numpy as np
-from PIL import Image
-#magnetic
-from datetime import datetime
-import ppigrf
 import pydeck as pdk
-import geopandas as gpd
-from geographiclib.geodesic import Geodesic
-
 
 st.set_page_config(layout="wide", page_title="Aplicações Geográficas")  # Esta linha deve vir antes de qualquer st.write(), st.title(), etc.
 
