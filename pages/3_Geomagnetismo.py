@@ -18,7 +18,7 @@ st.sidebar.title("About")
 st.sidebar.info("Geographic")
 
 #--------------------------------------------------------------------------------------
-st.title("🌐 Cálculo do Campo Magnético com IGRF-14")
+st.title("🌐 Cálculo do Campo Geomagnético com IGRF-14")
 st.markdown("Selecione um local no mapa ou insira manualmente as coordenadas para calcular a Intensidade Total (F) e a Declinação Magnética, com base no modelo IGRF (International Geomagnetic Reference Field). Os valores são gerados a partir da 14ª geração do modelo, finalizada em 2024 e desenvolvida pela International Association of Geomagnetism and Aeronomy (IAGA).")
 # Dados iniciais para exibir no mapa (São Paulo)
 default_lat = -22.4018
