@@ -1,20 +1,18 @@
 # Aplicações Geoespaciais
 
-Para criar as aplicações geodésicas foi utilizada a biblioteca GeographicLib, e a aplicação geomagnética a biblioteca pipigrj.
+Este repositório contém um conjunto de ferramentas geoespaciais desenvolvidas para cálculos geodésicos e aplicações geomagnéticas. As funcionalidades são baseadas em bibliotecas robustas e precisas, como a [GeographicLib](https://geographiclib.sourceforge.io/) e a [pipigrj](https://pypi.org/project/pipigrj/).
 
-https://geographic-v001.streamlit.app/
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
 
-### How to run it on your own machine
+### Bibliotecas Utilizadas
 
-1. Install the requirements
+- **[GeographicLib](https://geographiclib.sourceforge.io/)**: Utilizada para cálculos geodésicos de alta precisão, como distância entre coordenadas, azimutes e resolução de problemas de navegação.
+- **[pipigrj](https://pypi.org/project/pipigrj/)**: Aplicada em modelos geomagnéticos, permitindo calcular a inclinação, declinação e intensidade do campo magnético terrestre.
+- **[pydeck](https://deckgl.readthedocs.io/en/latest/gallery/bitmap_layer.html)**: Renderização de mapas.
+- **[Pandas](https://pandas.pydata.org/docs/)**: Estruturação e criação das tabelas.
 
-   ```
-   $ pip install -r requirements.txt
-   ```
 
-2. Run the app
+### Funcionalidades
 
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+- Cálculo da distância geodésica entre dois pontos (lat/lon).
+- Cálculo de azimute direto e inverso.
+- Modelo geomagnético baseado em dados do International Geomagnetic Reference Field (IGRJ).
