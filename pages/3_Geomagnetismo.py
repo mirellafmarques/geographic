@@ -67,9 +67,9 @@ if st.button("Calcular Campo Magnético"):
     declinacao = np.degrees(np.arctan2(Be, Bn))
 
     st.markdown("Resultados:")
-    #st.write(f"**Componente Leste (Be):** {Be.item():.2f} nT")
-    #st.write(f"**Componente Norte (Bn):** {Bn.item():.2f} nT")
-    #st.write(f"**Componente Vertical (Bu):** {Bu.item():.2f} nT")
+    st.write(f"**Componente Leste (Be):** {Be.item():.2f} nT")
+    st.write(f"**Componente Norte (Bn):** {Bn.item():.2f} nT")
+    st.write(f"**Componente Vertical (Bu):** {Bu.item():.2f} nT")
     st.write(f"**Intensidade Total (F):** {Bt.item():.2f} nT")
     st.write(f"**Declinação Magnética:** {declinacao.item():.2f}°")
 
