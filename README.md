@@ -1,12 +1,12 @@
 # Aplicações Geoespaciais
 
-Este repositório contém um conjunto de ferramentas geoespaciais desenvolvidas para cálculos geodésicos e aplicações geomagnéticas. As funcionalidades são baseadas em bibliotecas robustas e precisas, como a [GeographicLib](https://geographiclib.sourceforge.io/) e a [Ppigrj](https://pypi.org/project/pipigrj/).
+Este repositório contém um conjunto de ferramentas geoespaciais desenvolvidas para cálculos geodésicos e aplicações geomagnéticas. As funcionalidades são baseadas em bibliotecas robustas e precisas, como a [GeographicLib](https://geographiclib.sourceforge.io/) e a [Ppigrj](https://github.com/IAGA-VMOD/ppigrf).
 
 
 ### Bibliotecas Utilizadas
 
 - **[GeographicLib](https://geographiclib.sourceforge.io/)**: Utilizada para cálculos geodésicos de alta precisão, como distância entre coordenadas, azimutes e resolução de problemas de navegação.
-- **[Ppigrj](https://pypi.org/project/pipigrj/)**: Aplicada em modelos geomagnéticos, permitindo calcular a inclinação, declinação e intensidade do campo magnético terrestre.
+- **[Ppigrj](https://github.com/IAGA-VMOD/ppigrf)**: Aplicada em modelos geomagnéticos, permitindo calcular a inclinação, declinação e intensidade do campo magnético terrestre.
 - **[Pydeck](https://deckgl.readthedocs.io/en/latest/gallery/bitmap_layer.html)**: Renderização de mapas.
 - **[Pandas](https://pandas.pydata.org/docs/)**: Estruturação e criação das tabelas.
 
