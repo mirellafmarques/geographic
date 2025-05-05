@@ -13,7 +13,7 @@ st.write("Adicione as coordenadas de pelo menos 3 pontos para que a área seja c
 if "pontos" not in st.session_state:
     st.session_state["pontos"] = []
 
-# Formulário de entrada
+# Entrada dos dados
 with st.form("entrada_pontos"):
     nome = st.text_input("Nome do ponto")
     lat = st.number_input("Latitude", format="%.6f")
@@ -23,7 +23,7 @@ with st.form("entrada_pontos"):
 if submit and nome:
     st.session_state["pontos"].append({"nome": nome, "latitude": lat, "longitude": lon})
 
-# Processar pontos se existirem
+# Processar pontos
 if st.session_state["pontos"]:
     df = pd.DataFrame(st.session_state["pontos"])
 
@@ -42,7 +42,7 @@ if st.session_state["pontos"]:
         pickable=True,
     )
 
-    # Criar lista de coordenadas do polígono (fechando com o 1º ponto no final)
+    # Criar lista de coordenadas
     if len(df) >= 3:
         polygon_coords = [[row["longitude"], row["latitude"]] for _, row in df.iterrows()]
         polygon_coords.append(polygon_coords[0])  # Fecha o polígono
@@ -78,7 +78,7 @@ if st.session_state["pontos"]:
     )
     st.pydeck_chart(deck)
 
-    # Cálculo da área geodésica
+    # Cálculo da área
     if len(df) >= 3:
         st.write("Pontos usados no cálculo de área:")
         st.dataframe(df[["nome", "latitude", "longitude"]])
