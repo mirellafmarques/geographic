@@ -13,7 +13,7 @@ st.set_page_config(layout="wide", page_title="Geographic")  # Esta linha deve vi
 # Construindo o Sidebar
 st.sidebar.title("Geographic")
 #page = st.sidebar.radio("Aplicações", ["Geografico", "Magnetico"])
-st.sidebar.image("Tera.png")
+st.sidebar.image("Terra.png")
 
 #--------------------------------------------------------------------------------------
 st.title("🌐 Cálculo do Campo Geomagnético com IGRF-14")
