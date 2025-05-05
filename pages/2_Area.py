@@ -9,7 +9,7 @@ st.title("Cálculo da Área")
 st.subheader("Coordenadas Geodésicas")
 st.write("Adicione as coordenadas de pelo menos 3 pontos para que a área seja calculada. O sistema de referência utilizado é o WGS84.")
 
-# Inicializar lista de pontos
+# Lista de pontos
 if "pontos" not in st.session_state:
     st.session_state["pontos"] = []
 
