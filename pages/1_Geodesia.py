@@ -72,7 +72,7 @@ point_layer = pdk.Layer(
     pickable=True
 )
 
-# Visualização do mapa com estilo Light
+# Mapa
 view_state = pdk.ViewState(
     latitude=(latitude_origem + latitude_destino) / 2,
     longitude=(longitude_origem + longitude_destino) / 2,
