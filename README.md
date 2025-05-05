@@ -16,3 +16,7 @@ Este repositório contém um conjunto de ferramentas geoespaciais desenvolvidas 
 - Cálculo da distância geodésica entre dois pontos (lat/lon).
 - Cálculo de azimute direto e inverso.
 - Modelo geomagnético baseado em dados do International Geomagnetic Reference Field (IGRJ).
+
+### Aplicativo
+
+https://geographic-v001.streamlit.app/
