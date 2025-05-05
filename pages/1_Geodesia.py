@@ -218,7 +218,7 @@ import pydeck as pdk
 from geographiclib.geodesic import Geodesic
 import pandas as pd
 
-# --- Configuração da Página ---
+# Configuração da Página
 st.subheader("Cálculo Geodésico Direto")
 
 st.markdown("""
@@ -232,7 +232,7 @@ azimuth = st.number_input("Azimute (graus)", min_value=0, max_value=360, value=9
 lat1 = -22.8052698
 lon1 = -43.2566277
 
-# --- Cálculo Geodésico Direto ---
+# Cálculo Geodésico Direto
 geod = Geodesic.WGS84
 result = geod.Direct(lat1, lon1, azimuth, distance)
 lat2 = result['lat2']
