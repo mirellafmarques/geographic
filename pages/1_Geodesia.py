@@ -250,7 +250,7 @@ point_layer = pdk.Layer(
     df,
     get_position='[lon, lat]',
     get_fill_color='[200, 30, 0, 160]',
-    get_radius=200,
+    get_radius=50,
     pickable=True
 )
 
