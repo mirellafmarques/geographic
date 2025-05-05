@@ -1,7 +1,7 @@
 import streamlit as st
 import pydeck as pdk
 
-st.set_page_config(layout="wide", page_title="Aplicações Geográficas")  # Esta linha deve vir antes de qualquer st.write(), st.title(), etc.
+st.set_page_config(layout="wide", page_title="Aplicações Geodésicas")  # Esta linha deve vir antes de qualquer st.write(), st.title(), etc.
 
 # Construindo o Sidebar
 st.sidebar.title("Aplicações Geoespaciais")
