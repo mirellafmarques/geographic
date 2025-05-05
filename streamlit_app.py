@@ -11,7 +11,7 @@ st.sidebar.title("About")
 st.sidebar.info("")
 
 #--------------------------------------------------------------------------------------
-st.title("🌐 Aplicações Geoespaciais")
+st.title("Aplicações Geoespaciais")
 st.subheader("Ferramentas para cálculos geodésicos e modelos geomagnéticos")
 
 st.write("🔹 Cálculo de Distância e Azimute")  
