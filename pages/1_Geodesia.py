@@ -173,6 +173,43 @@ if st.session_state["pontos"]:
         st.write(f"Distância entre {ponto1} e {ponto2}: {g['s12']:.2f} metros")
         st.write(f"Azimute: {(g['azi1']+ 360) % 360:.2f}°")
 
+# Criar DataFrame com os pontos da linha
+        linha_df = pd.DataFrame([{
+            "origem_lon": coord1["longitude"],
+            "origem_lat": coord1["latitude"],
+            "destino_lon": coord2["longitude"],
+            "destino_lat": coord2["latitude"],
+        }])
+
+        # Camada da linha entre os pontos
+        linha_layer = pdk.Layer(
+            "LineLayer",
+            data=linha_df,
+            get_source_position=["origem_lon", "origem_lat"],
+            get_target_position=["destino_lon", "destino_lat"],
+            get_color=[0, 0, 255],
+            get_width=5,
+        )
+
+        # Atualizar o mapa com a linha
+        layers.append(linha_layer)
+
+        map = pdk.Deck(
+            map_style="mapbox://styles/mapbox/light-v9",
+            initial_view_state=pdk.ViewState(
+                latitude=df["latitude"].mean(),
+                longitude=df["longitude"].mean(),
+                zoom=3,
+                pitch=0,
+            ),
+            layers=layers,
+            tooltip={"text": "{nome}"}
+        )
+
+        st.pydeck_chart(map)
+
+
+
 
 
 # ------------------------------------
