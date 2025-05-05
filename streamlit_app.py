@@ -13,7 +13,7 @@ st.sidebar.info("Este aplicativo serve como demonstração prática da aplicaç�
 st.title("Aplicações Geoespaciais")
 st.subheader("Ferramentas para cálculos geodésicos e modelos geomagnéticos")
 
-st.write("🔹 Cálculo Geodésicos - Método Inverso, Direto e Transformação de Coordenadas")  
+st.write("🔹 Cálculo Geodésicos - Método Inverso e Direto")  
 st.write("🔹 Cálculo Geodésicos - Cálculo de Área")
 st.write("🔹 Cálculo da Intensidade e da Declinação do Campo Geomagnético")
 
