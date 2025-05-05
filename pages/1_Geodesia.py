@@ -1,33 +1,29 @@
 import streamlit as st
 import pandas as pd
-from pyproj import Transformer
 import pydeck as pdk
 from geographiclib.geodesic import Geodesic
 
-#"mapbox://styles/mapbox/satellite-v9"
-
 st.title("Aplicações Geodésicas")
 st.subheader("Cálculo Geodésico Inverso")
-st.write("Ao definir coordenadas no Rio de Janeiro e em Buenos Aires, este exemplo calcula a distância e a linha de rumo entre elas. Esse cálculo é fundamental para o planejamento eficiente de rotas na navegação aérea e marítima. O sistema realizará a transformação para o sistema UTM. Depois que o usuário selecionar os pontos, a distância e o azimute entre eles serão calculados e exibidos. O sistema de referência utilizado é o WGS84.")
+st.write("Ao definir coordenadas no Rio de Janeiro e em Buenos Aires, este exemplo calcula a distância e a linha de rumo entre elas. Esse cálculo é fundamental para o planejamento eficiente de rotas na navegação aérea e marítima. O sistema de referência utilizado é o WGS84.")
 st.write("Para esse cálculo, foi utilizado o método geodésico inverso, que emprega as coordenadas geográficas para determinar a distância e o azimute entre dois pontos.")
 
-# Definir Pontos de Origem e Destino (fixos)
-latitude_origem = -22.9068  # Rio de Janeiro
+# Pontos fixos: Rio de Janeiro e Buenos Aires
+latitude_origem = -22.9068
 longitude_origem = -43.1729
-latitude_destino = -34.6037  # Buenos Aires
+latitude_destino = -34.6037
 longitude_destino = -58.3816
 
-# Calcular geodésica
+# Cálculo geodésico inverso
 geod = Geodesic.WGS84
 npts = 50
 points = [(longitude_origem, latitude_origem)]
 
-# Distância e azimute inicial
 g = geod.Inverse(latitude_origem, longitude_origem, latitude_destino, longitude_destino)
 dist_rumo = g['s12']
-azi1 = (g['azi1']+ 360) % 360
+azi1 = (g['azi1'] + 360) % 360
 
-# Gerar pontos ao longo da linha de rumo
+# Gerar pontos intermediários na linha
 for i in range(1, npts + 1):
     s = dist_rumo * i / (npts + 1)
     p = geod.Direct(latitude_origem, longitude_origem, azi1, s)
@@ -35,64 +31,14 @@ for i in range(1, npts + 1):
 
 points.append((longitude_destino, latitude_destino))
 
-# Criar DataFrame de segmentos da linha
+# Criar DataFrame de segmentos
 data_segments = []
 for i in range(len(points) - 1):
     data_segments.append({
         'start': points[i],
         'end': points[i+1],
         'dist_total': f"{dist_rumo:.2f} m",
-        'azimute_inicial': f"{azi1:.2f}°"
-    })
-df_segments = pd.DataFrame(data_segments)
-
-# Camada de linhas com tooltip
-line_layer = pdk.Layer(
-    type="LineLayer",
-    data=df_segments,
-    get_source_position="start",
-    get_target_position="end",
-    get_color=[255, 0, 0],
-    get_width=5,
-    pickable=True
-)
-
-# Pontos origem/destino
-point_data = pd.DataFrame({
-    'coordinates': [(longitude_origem, latitude_origem), (longitude_destino, latitude_destino)],
-    'label': ['Origem', 'Destino']
-})
-
-point_layer = pdk.Layer(
-    type="ScatterplotLayer",
-    data=point_data,
-    get_position='coordinates',
-    get_radius=100000,
-    get_color=[255, 0, 0], 
-    pickable=True
-)
-
-# Mapa
-view_state = pdk.ViewState(
-    latitude=(latitude_origem + latitude_destino) / 2,
-    longitude=(longitude_origem + longitude_destino) / 2,
-    zoom=3,
-    pitch=0
-)
-
-deck = pdk.Deck(
-    map_style="mapbox://styles/mapbox/light-v9",
-    layers=[line_layer, point_layer],
-    initial_view_state=view_state
-)
-
-# Renderizar o mapa no Streamlit
-st.pydeck_chart(deck)
-
-# Mostrar resultados
-st.write(f"**Distância entre os pontos:** {dist_rumo / 1000:.2f} km")
-st.write(f"**Azimute (BR-ARG):** {azi1:.2f}°")
-
+        'azimute_inicial': f_
 
 
 
