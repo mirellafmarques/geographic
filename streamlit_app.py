@@ -1,4 +1,4 @@
-paimport streamlit as st
+import streamlit as st
 import pydeck as pdk
 
 st.set_page_config(layout="wide", page_title="Aplicações Geoespaciais")  # Esta linha deve vir antes de qualquer st.write(), st.title(), etc.
