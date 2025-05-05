@@ -6,8 +6,8 @@ Este repositório contém um conjunto de ferramentas geoespaciais desenvolvidas 
 ### Bibliotecas Utilizadas
 
 - **[GeographicLib](https://geographiclib.sourceforge.io/)**: Utilizada para cálculos geodésicos de alta precisão, como distância entre coordenadas, azimutes e resolução de problemas de navegação.
-- **[pipigrj](https://pypi.org/project/pipigrj/)**: Aplicada em modelos geomagnéticos, permitindo calcular a inclinação, declinação e intensidade do campo magnético terrestre.
-- **[pydeck](https://deckgl.readthedocs.io/en/latest/gallery/bitmap_layer.html)**: Renderização de mapas.
+- **[Pipigrj](https://pypi.org/project/pipigrj/)**: Aplicada em modelos geomagnéticos, permitindo calcular a inclinação, declinação e intensidade do campo magnético terrestre.
+- **[Pydeck](https://deckgl.readthedocs.io/en/latest/gallery/bitmap_layer.html)**: Renderização de mapas.
 - **[Pandas](https://pandas.pydata.org/docs/)**: Estruturação e criação das tabelas.
 
 
