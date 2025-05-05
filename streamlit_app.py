@@ -3,7 +3,7 @@ import pydeck as pdk
 
 st.set_page_config(layout="wide", page_title="Aplicações Geoespaciais")  # Esta linha deve vir antes de qualquer st.write(), st.title(), etc.
 
-# Construindo o Sidebar
+# Sidebar
 st.sidebar.title("Aplicações Geoespaciais")
 #page = st.sidebar.radio("Aplicações", ["Geografico", "Magnetico"])
 st.sidebar.image("Terra.png")
@@ -17,7 +17,6 @@ st.subheader("Ferramentas para cálculos geodésicos e modelos geomagnéticos")
 st.write("🔹 Cálculo Geodésicos - Método Inverso, Direto e Transformação de Coordenadas")  
 st.write("🔹 Cálculo Geodésicos - Cálculo de Área")
 st.write("🔹 Cálculo da Intensidade e da Declinação do Campo Geomagnético")
-
 
 #Mapa
 st.pydeck_chart(pdk.Deck(
